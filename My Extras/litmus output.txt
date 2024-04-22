@@ -1,0 +1,65 @@
+litmus7 -os mac SB.litmus                 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Results for SB.litmus %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+X86 SB
+"Fre PodWR Fre PodWR"
+
+{
+ [x]=0;
+ [y]=0;
+}
+ P0          | P1          ;
+ MOV [x],$1  | MOV [y],$1  ;
+ MOV EAX,[y] | MOV EAX,[x] ;
+
+exists (0:EAX=0 /\ 1:EAX=0)
+Generated assembler
+/var/folders/cc/hyf72f3d4_57_24w761vcb480000gn/T/dirb54de5.tmp/SB.c:181:50: error: invalid output constraint '=&a' in asm
+:[x] "=m" (_a->x[_i]),[y] "=m" (_a->y[_i]),[eax] "=&a" (_a->out_0_eax[_i])
+                                                 ^
+/var/folders/cc/hyf72f3d4_57_24w761vcb480000gn/T/dirb54de5.tmp/SB.c:208:50: error: invalid output constraint '=&a' in asm
+:[x] "=m" (_a->x[_i]),[y] "=m" (_a->y[_i]),[eax] "=&a" (_a->out_1_eax[_i])
+                                                 ^
+2 errors generated.
+File "SB.litmus" Exec of 'gcc -Wall -std=gnu99 -fomit-frame-pointer -O2 -S -o /var/folders/cc/hyf72f3d4_57_24w761vcb480000gn/T/dirb54de5.tmp/SB.s /var/folders/cc/hyf72f3d4_57_24w761vcb480000gn/T/dirb54de5.tmp/SB.c' failed
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! Test SB.litmus failed !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Reported: Exec of 'gcc -Wall -std=gnu99 -fomit-frame-pointer -O2 -S -o /var/folders/cc/hyf72f3d4_57_24w761vcb480000gn/T/dirb54de5.tmp/SB.s /var/folders/cc/hyf72f3d4_57_24w761vcb480000gn/T/dirb54de5.tmp/SB.c' failed
+
+Machine:Rohaans-MacBook-Pro.local
+Hardware:
+
+    Hardware Overview:
+
+      Model Name: MacBook Pro
+      Model Identifier: MacBookPro18,1
+      Model Number: MK183ZS/A
+      Chip: Apple M1 Pro
+      Total Number of Cores: 10 (8 performance and 2 efficiency)
+      Memory: 16 GB
+      System Firmware Version: 8422.121.1
+      OS Loader Version: 8422.121.1
+      Serial Number (system): C47229PXG3
+      Hardware UUID: D3AA0771-9690-545A-8C12-BF69BA67F864
+      Provisioning UDID: 00006000-000A116C0251801E
+      Activation Lock Status: Disabled
+
+Revision exported, version 7.56+03
+Command line: litmus7 -os mac SB.litmus
+Parameters
+#define SIZE_OF_TEST 10000000
+#define NUMBER_OF_RUN 10
+#define AVAIL 1
+#define STRIDE (-1)
+#define MAX_LOOP 0
+/* gcc options: -Wall -std=gnu99 -fomit-frame-pointer -O2 */
+/* barrier: user */
+/* launch: changing */
+/* affinity: none */
+/* memory: direct */
+/* safer: write */
+/* preload: random */
+/* speedcheck: no */
+/* alloc: dynamic */
